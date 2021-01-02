@@ -15,23 +15,25 @@ function AHKLockpicking:BeginLockpicking()
 	zo_callLater(function() AHKLockpicking:CheckLockPickStatus() end, 500)
 end
 function AHKLockpicking:CheckLockPickStatus()
+	local verbose = false
+	local repeatrate = 50
 	--d("Stress:"..tostring(GetSettingChamberStress()).." Chambers:"..tostring(IsChamberSolved(1))..":"..tostring(IsChamberSolved(2))..":"..tostring(IsChamberSolved(3))..":"..tostring(IsChamberSolved(4))..":"..tostring(IsChamberSolved(5)))
 	state1, prog1 = GetChamberState(1)
 	state2, prog2 = GetChamberState(2)
 	state3, prog3 = GetChamberState(3)
 	state4, prog4 = GetChamberState(4)
 	state5, prog5 = GetChamberState(5)
-	d("Stress:"..tostring(GetSettingChamberStress()).." State,Prog"
-		..":"..tostring(state1)..","..tostring(prog1)
-		..":"..tostring(state2)..","..tostring(prog2)
-		..":"..tostring(state3)..","..tostring(prog3)
-		..":"..tostring(state4)..","..tostring(prog4)
-		..":"..tostring(state5)..","..tostring(prog5))
-	local verbose = true
-	local repeatrate = 50
-	d("Left:"..tostring(ptk.IsIndOn(ptk.VM_MOVE_10_LEFT))
-		.." Right:"..tostring(ptk.IsIndOn(ptk.VM_MOVE_10_RIGHT))
-		.." Mouse:"..tostring(ptk.IsIndOn(ptk.VM_BTN_LEFT)))
+	if verbose then
+		d("Stress:"..tostring(GetSettingChamberStress()).." State,Prog"
+			..":"..tostring(state1)..","..tostring(prog1)
+			..":"..tostring(state2)..","..tostring(prog2)
+			..":"..tostring(state3)..","..tostring(prog3)
+			..":"..tostring(state4)..","..tostring(prog4)
+			..":"..tostring(state5)..","..tostring(prog5))
+		d("Left:"..tostring(ptk.IsIndOn(ptk.VM_MOVE_10_LEFT))
+			.." Right:"..tostring(ptk.IsIndOn(ptk.VM_MOVE_10_RIGHT))
+			.." Mouse:"..tostring(ptk.IsIndOn(ptk.VM_BTN_LEFT)))
+	end
 	if ptk.IsIndOn(ptk.VM_MOVE_10_LEFT) then
 		ptk.SetIndOff(ptk.VM_MOVE_10_LEFT)
 		ptk.SetIndOn(ptk.VM_BTN_LEFT)
