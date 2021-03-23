@@ -1,6 +1,6 @@
 ## Title: AHKLockpicking
 ## Author: Phrosty1
-## APIVersion: 100032
+## APIVersion: 100033 100034
 ## AddOnVersion: 001
 ## Version: 0.01
 ## DependsOn: LibPixelControl
